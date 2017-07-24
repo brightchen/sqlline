@@ -41,6 +41,9 @@ class DatabaseConnection {
     this.url = url;
     this.username = username;
     this.password = password;
+    String info = "driver: " + driver + "; url: " + url + "; username: " + username + "; password: " + password;
+    System.out.println(info);
+    sqlLine.info(info);
   }
 
   @Override public String toString() {
@@ -154,6 +157,13 @@ class DatabaseConnection {
     info.put("user", username);
     info.put("password", password);
     connection = theDriver.connect(url, info);
+    
+    {
+        String info1 = "connected. url: " + url + "; user: " + username + "; password: " + password;
+        System.out.println(info1);
+        sqlLine.info(info1);
+    }
+        
     meta = connection.getMetaData();
 
     try {
